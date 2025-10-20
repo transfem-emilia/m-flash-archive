@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Flash Game Player</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./images/Waving Girl Trans Canada Flag.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #3c2a34;
+            position: fixed;
+            touch-action: none;
+        }
+        
+        #swf-container {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        #swf-container ruffle-player {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #f2b3c0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        
+        #loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        #error {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff6b6b;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            z-index: 1000;
+            max-width: 80%;
+        }
+        
+        #back-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 2000;
+            background-color: #f36a85;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        
+        #back-btn:active {
+            opacity: 1;
+            transform: scale(0.95);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button id="back-btn" onclick="window.close()">← Back</button>
+    <div id="loading">Loading game</div>
+    <div id="error"></div>
+    <div id="swf-container"></div>
+    
+    <script>
+        const RUFFLE_CDN = "https://unpkg.com/@ruffle-rs/ruffle";
+        const LOCAL_RUFFLE = "/ruffle/ruffle.js";
+        
+        // Prevent scrolling on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.target.tagName !== 'RUFFLE-PLAYER') {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        function loadRuffleScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = false;
+                script.addEventListener('load', resolve);
+                script.addEventListener('error', () => reject(new Error(`Failed to load Ruffle script: ${src}`)));
+                document.head.appendChild(script);
+            });
+        }
+        
+        async function initPlayer() {
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const container = document.getElementById('swf-container');
+            
+            try {
+                // Get game file from URL parameter
+                const params = new URLSearchParams(window.location.search);
+                const gameFile = params.get('game');
+                
+                if (!gameFile) {
+                    throw new Error('No game specified');
+                }
+                
+                // Load Ruffle
+                let usingCDN = false;
+                try {
+                    await loadRuffleScript(LOCAL_RUFFLE);
+                } catch {
+                    console.warn('Local Ruffle failed, falling back to CDN');
+                    await loadRuffleScript(RUFFLE_CDN);
+                    usingCDN = true;
+                }
+                
+                // Global configuration
+                window.RufflePlayer = window.RufflePlayer || {};
+                window.RufflePlayer.config = {
+                    publicPath: usingCDN ? 'https://unpkg.com/@ruffle-rs/ruffle/' : '/ruffle/',
+                    polyfills: true,
+                    allowScriptAccess: false,
+                    autoplay: 'auto',
+                    unmuteOverlay: 'visible',
+                    scale: 'showAll',
+                    allowFullscreen: true,
+                    logLevel: 'info',
+                };
+                
+                // Create player
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                
+                // Configure player for mobile
+                player.ruffle().config = { 
+                    allowScriptAccess: false,
+                    scale: 'showAll'
+                };
+                player.style.width = '100%';
+                player.style.height = '100%';
+                player.style.display = 'block';
+                player.style.setProperty('--splash-screen-background', '#3c2a34');
+                player.style.setProperty('--logo-display', 'none');
+                
+                container.appendChild(player);
+                
+                // Event handlers
+                player.addEventListener('loadedmetadata', () => {
+                    console.info('Metadata:', player.ruffle().metadata);
+                    loading.style.display = 'none';
+                });
+                
+                player.addEventListener('loadeddata', () => {
+                    console.info('Scene fully loaded');
+                });
+                
+                // Load the game
+                const swfPath = `/swfs/${gameFile}`;
+                await player.ruffle().load(swfPath);
+                console.info(`Loaded: ${swfPath}`);
+                
+            } catch (err) {
+                console.error('Error loading game:', err);
+                loading.style.display = 'none';
+                error.style.display = 'block';
+                error.innerHTML = `Failed to load game<br><small>${err.message}</small><br><br><button onclick="window.close()" style="background-color: #f36a85; color: white; border: 2px solid white; padding: 10px 20px; border-radius: 5px; font-size: 14px; cursor: pointer;">Go Back</button>`;
+            }
+        }
+        
+        // Start when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPlayer);
+        } else {
+            initPlayer();
+        }
+    </script>
+</body>
+</html>

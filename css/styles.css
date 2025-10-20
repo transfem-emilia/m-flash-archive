@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'SF Pro Display', sans-serif;
+    src: url('../fonts/SFProDisplay-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mea Culpa';
+    src: local('Mea Culpa Regular'), local('MeaCulpa-Regular'),
+    url('../fonts/MeaCulpa-Regular.woff2') format('woff2'),
+    url('../fonts/MeaCulpa-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: auto;
+}
+
+body {
+    font-family: 'Montserrat', 'SF Pro Display', sans-serif;
+    font-weight: 500;
+    background-color: #3c2a34;
+}
+
+/* Hide swf-container on mobile site since we open in new tabs */
+#swf-container {
+    display: none;
+}
+
+.buttons {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #f36a85;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Montserrat', 'SF Pro Display', sans-serif;
+    font-weight: bold;
+}
+
+button:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+}
+
+/* Mobile dropdown styling */
+select#gameSelect {
+    margin: 1em auto;
+    display: block;
+    padding: 15px 20px;
+    font-size: 16px;
+    width: 90%;
+    max-width: 400px;
+    background-color: #f36a85;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    font-family: 'Montserrat', 'SF Pro Display', sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+select#gameSelect:focus {
+    outline: 2px solid #f2b3c0;
+    outline-offset: 2px;
+}
+
+select#gameSelect option {
+    background-color: #3c2a34;
+    color: white;
+    font-family: 'Montserrat', 'SF Pro Display', sans-serif;
+    padding: 10px;
+}
+
+/* Hide fullscreen button if it exists */
+#fs-btn,
+#fullscreen-toggle {
+    display: none;
+}
+
+.footer-text {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #f2b3c0;
+    font-family: 'Montserrat', 'SF Pro Display', sans-serif;
+    font-weight: 500;
+}
+
+.centered-line {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #f36a85;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.social-icon:active {
+    opacity: 0.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    color: #f36a85;
+}
+
+h2 {
+    padding: 0 20px;
+    font-size: 14pt;
+    line-height: 1.5;
+}
+
+h3 {
+    padding: 0 15px;
+}
+
+h4 {
+    padding: 0 20px;
+}
+
+.textthatneedsthis {
+    color: #f36a85;
+    text-shadow: 
+    -2px -2px 0 #f2b3c0,
+    0px -2px 0 #f2b3c0,
+    2px -2px 0 #f2b3c0,
+    -2px 0px 0 #f2b3c0,
+    2px 0px 0 #f2b3c0,
+    -2px 2px 0 #f2b3c0,
+    0px 2px 0 #f2b3c0,
+    2px 2px 0 #f2b3c0;
+}
+
+a {
+    color: #f36a85;
+    text-decoration: none;
+}
+
+a:active {
+    opacity: 0.7;
+}
+
+a.no-underline:hover,
+a.no-underline:active {
+    text-decoration: none;
+}
+
+.outlined-text {
+    text-shadow: 
+        -1px -1px 0 #f2b3c0,
+        0px -1px 0 #f2b3c0,
+        1px -1px 0 #f2b3c0,
+        -1px 0px 0 #f2b3c0,
+        1px 0px 0 #f2b3c0,
+        -1px 1px 0 #f2b3c0,
+        0px 1px 0 #f2b3c0,
+        1px 1px 0 #f2b3c0;
+}
+
+.spacer {
+    color: #3c2a34;
+}
+
+.website-nav {
+    background-color: #3c2a34;
+    backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.website-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+}
+
+.website-nav li {
+    margin: 0 20px;
+}
+
+.website-nav a {
+    text-decoration: none;
+    color: #f36a85;
+    font-size: 14px;
+    transition: opacity 0.2s;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+}
+
+.website-nav a:active {
+    opacity: 0.6;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 22px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #f36a85;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Mobile styles - always active on mobile site */
+.hamburger {
+    display: flex;
+}
+
+.website-nav ul {
+    position: fixed;
+    top: 54px;
+    left: -4vw;
+    width: 100%;
+    background-color: #3c2a34;
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    display: none;
+    margin: 0;
+    justify-content: center;
+}
+
+.website-nav ul.active {
+    display: flex;
+}
+
+.website-nav li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Version badge */
+img[alt="GitHub commit activity"] {
+    display: block;
+    margin: 50px auto 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 425px) {
+    .website-nav ul {
+        left: -7vw;
+    }
+    
+    h3 {
+        font-size: 40pt !important;
+    }
+    
+    h4 {
+        font-size: 14pt !important;
+    }
+    
+    select#gameSelect {
+        width: 95%;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .website-nav ul {
+        left: -9vw;
+    }
+    
+    h3 {
+        font-size: 35pt !important;
+    }
+    
+    .social-icon {
+        font-size: 20px;
+        margin: 0 8px;
+    }
+}
