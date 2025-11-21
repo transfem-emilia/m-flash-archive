@@ -56,6 +56,8 @@
     const games = [
         { name: "Candy Crush (The Original)", file: "candyc.swf" },
         { name: "Jacksmith", file: "jacksmith.swf" },
+        { name: "Learn to Fly", file: "ltf.swf" },
+        { name: "Learn to Fly 2", file: "ltf2.swf" },
         { name: "Papa's Bakeria", file: "papasbakeria.swf" },
         { name: "Papa's Burgeria", file: "papasburgeria.swf" },
         { name: "Papa's Cheeseria", file: "papascheeseria_102.swf" },
@@ -69,7 +71,8 @@
         { name: "Papa's Scooperia", file: "papasscooperia_v102.swf" },
         { name: "Papa's Sushiria", file: "papassushiria.swf" },
         { name: "Papa's Taco Mia", file: "papastacomia.swf" },
-        { name: "Papa's Wingeria", file: "papaswingeria.swf" }
+        { name: "Papa's Wingeria", file: "papaswingeria.swf" },
+        { name: "The World's Hardest Game", file: "twhg.swf" }
     ];
 
     const btns = document.querySelector('.buttons');
