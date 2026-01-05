@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:title" content="Emilia's Flash Archive - Mobile" />
     <meta property="og:description" content="Play Flash Games on Mobile" />
-    <meta property="og:url" content="https://mobile.flash.northpoint.website/" />
-    <meta property="og:image" content="https://flash.northpoint.website/images/WavingGirlTransCanadaFlag.png" />
+    <meta property="og:url" content="https://mobile.flash.greatonthelakes.com/" />
+    <meta property="og:image" content="https://flash.greatonthelakes.com/images/WavingGirlTransCanadaFlag.png" />
     <meta property="og:type" content="website" />
     <title>Emilia's Flash Game Archive - Mobile</title>
     <link rel="shortcut icon" type="image/x-icon" href="./images/Waving Girl Trans Canada Flag.ico">
@@ -16,11 +16,11 @@
       // Redirect desktop users to main site
       const isMobile = /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini)\b/i.test(navigator.userAgent);
       if (!isMobile) {
-        window.location.href = "https://flash.northpoint.website/";
+        window.location.href = "https://flash.greatonthelakes.com/";
       }
       
       // Check maintenance mode
-      fetch("https://northpoint.website/status.txt")
+      fetch("https://www.greatonthelakes.com/status.txt")
           .then(response => response.text())
           .then(data => {
             const flag = data.trim();
@@ -41,7 +41,7 @@
   </head>
 <div id="navbar"></div>
 <script>
-  fetch("https://northpoint.website/nav.html") 
+  fetch("https://www.greatonthelakes.com/nav.html") 
     .then(response => response.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
@@ -51,7 +51,7 @@
     });
 </script>
 <body>
-  <h3 style="text-align: center; font-size: 50pt; font-family: 'Mea Culpa';"><a href="https://northpoint.website/" class="no-underline">Emilia Selene</a></h3>
+  <h3 style="text-align: center; font-size: 50pt; font-family: 'Mea Culpa';"><a href="https://www.greatonthelakes.com/" class="no-underline">Emilia Selene</a></h3>
   <h2>Notice: Due to the ongoing Cloudflare maintenance affecting multiple locations, parts of the website may not load or work as expected. There’s no need to contact me.</h2>
   <h1 class="spacer">spacer</h1>
   <h3 style="text-align: center; font-size: 22pt; padding-bottom: 25px">Welcome To Emilia's Flash Game Archive</h3>
