@@ -37,33 +37,29 @@
 
 <div id="navbar"></div>
 <script>
-  fetch("https://www.greatonthelakes.com/nav.html") 
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById("navbar").innerHTML = html;
-    })
-    .catch(error => {
-      console.error("Error loading navbar:", error);
-    });
-</script>
+      fetch("https://www.greatonthelakes.com/nav.html") 
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById("navbar").innerHTML = html;
+        })
+        .catch(error => {
+          console.error("Error loading navbar:", error);
+        });
+    </script>
+    <script>
+    fetch("https://flash.greatonthelakes.com/footer.html") 
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      })
+      .catch(error => {
+        console.error("Error loading footer:", error);
+      });
+    </script>
 <body>
   <h1 class="spacer">spacer</h1>
   <h3 style="font-family: 'SF Pro Display', sans-serif; font-weight: bold; color: #f36a85; text-align: center;"  >The page you’re looking for can’t be found.</h3>
-  <h1 class="spacer">spacer</h1>
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/transfem-emilia/m-flash-archive?style=flat-square&label=Version&color=f36a85&link=https%3A%2F%2Ftransfem-emilia.bearblog.dev%2Fblog%2F"
-  <h1 class="spacer">spacer</h1>
-
-  <div class="centered-line">
-    <a href="https://github.com/transfem-emilia" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://dsc.gg/transfem-emilia" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://tiktok.com/@transfem.emilia" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
-    <a href="https://youtube.com/@transfem.emilia" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://instagram.com/shmmerngin.on.13" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://threads.net/@transfem.emilia" class="social-icon" target="_blank"><i class="fab fa-threads"></i></a>
-    <a href="https://bsky.app/profile/okbuthereswhati.substack.com" class="social-icon" target="_blank"><i class="fab fa-bluesky"></i></a>
-    <a href="https://snapchat.com/t/iw3H3PfN" class="social-icon" target="_blank"><i class="fab fa-snapchat"></i></a>
-    <a href="https://x.com/transfem_emilia" class="social-icon" target="_blank"><i class="fab fa-x-twitter"></i></a>
-  </div>
+  <div id="footer"></div>
 
 </body>
 </html>

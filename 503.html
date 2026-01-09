@@ -34,15 +34,25 @@
 </head>
 <div id="navbar"></div>
 <script>
-  fetch("https://www.greatonthelakes.com/nav.html") 
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById("navbar").innerHTML = html;
-    })
-    .catch(error => {
-      console.error("Error loading navbar:", error);
-    });
-</script>
+      fetch("https://www.greatonthelakes.com/nav.html") 
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById("navbar").innerHTML = html;
+        })
+        .catch(error => {
+          console.error("Error loading navbar:", error);
+        });
+    </script>
+    <script>
+    fetch("https://flash.greatonthelakes.com/footer.html") 
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      })
+      .catch(error => {
+        console.error("Error loading footer:", error);
+      });
+    </script>
 <body>
     <h3 style="text-align: center; font-size: 40pt; font-family: 'Mea Culpa';"><a href="https://www.greatonthelakes.com/" class="no-underline">Emilia Selene</a></h3>
     <h3 style="text-align: center; font-size: 22pt;">The Flash Archive is unavailable due to maintenance</h3>
@@ -50,13 +60,6 @@
     <p style="color:#3c2a34;">spacer</p>
     <h3 style="font-family: 'SF Pro Display', sans-serif; font-weight: bold; color:#f36a85; text-align: center;">Please check back later on an iPhone, iPad, Android, or other mobile platform.</h3>
     
-    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/transfem-emilia/m-flash-archive?style=flat-square&label=Version&color=f36a85&link=https%3A%2F%2Ftransfem-emilia.bearblog.dev%2Fblog%2F">
-
-    <p style="color:#3c2a34;">spacer</p>
-    <p style="color:#3c2a34;">spacer</p>
-    <div class="centered-line">
-  <a href="https://github.com/transfem-emilia" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
-  <a href="https://dsc.gg/transfem-emilia" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
-    </div>
+    <div id="footer"></div>
 </body>
 </html>
