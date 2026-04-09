@@ -1,5 +1,5 @@
 /*
-  Mobile-only Ruffle integration for mobile.flash.greatonthelakes.com
+  Mobile-only Ruffle integration for mobile.archive.georgian-speedvale.org
   - Redirects desktop users to main site
   - Opens games in new fullscreen tab
   - Optimized for mobile devices
@@ -12,7 +12,7 @@
   // Redirect desktop to main site
   const isMobile = /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini)\b/i.test(navigator.userAgent);
   if (!isMobile) {
-    window.location.href = "https://flash.greatonthelakes.com/";
+    window.location.href = "https://archive.georgian-speedvale.org/";
     return;
   }
 

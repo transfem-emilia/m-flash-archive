@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:title" content="Emilia's Flash Archive - Mobile" />
     <meta property="og:description" content="Play Flash Games on Mobile" />
-    <meta property="og:url" content="https://mobile.flash.greatonthelakes.com/" />
-    <meta property="og:image" content="https://flash.greatonthelakes.com/images/GOTL.png" />
+    <meta property="og:url" content="https://mobile.archive.georgian-speedvale.org/" />
+    <meta property="og:image" content="https://archive.georgian-speedvale.org/images/GSV.png" />
     <meta property="og:type" content="website" />
     <title>Emilia's Flash Game Archive - Mobile</title>
-    <link rel="icon" type="image/svg+xml" href="./images/GOTL.svg">
+    <link rel="icon" type="image/svg+xml" href="./images/GSV.svg">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://kit.fontawesome.com/39ffdb166a.js" crossorigin="anonymous"></script>
     <script>
       // Redirect desktop users to main site
       const isMobile = /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini)\b/i.test(navigator.userAgent);
       if (!isMobile) {
-        window.location.href = "https://flash.greatonthelakes.com/";
+        window.location.href = "https://archive.georgian-speedvale.org/";
       }
       
       // Check maintenance mode
-      fetch("https://www.greatonthelakes.com/status.txt")
+      fetch("https://www.georgian-speedvale.org/status.txt")
           .then(response => response.text())
           .then(data => {
             const flag = data.trim();
